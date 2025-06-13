@@ -28,13 +28,6 @@
         </repository>
     </repositories>
 
-   <distributionManagement>
-        <repository>
-            <id>github</id>
-            <name>GitHub Minova Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/minova-afis/aero.minova.maven.root</url>
-        </repository>
-    </distributionManagement>
 
     <dependencies>
         <dependency>
@@ -42,5 +35,12 @@
             <artifactId>msal4j</artifactId>
             <version>1.15.1</version>
         </dependency>
+	     <dependency>
+             <groupId>com.azure.spring</groupId>
+             <artifactId>spring-cloud-azure-dependencies</artifactId>
+             <version>5.13.0</version>
+             <type>pom</type>
+             <scope>import</scope>
+         </dependency>
     </dependencies>
 </project>

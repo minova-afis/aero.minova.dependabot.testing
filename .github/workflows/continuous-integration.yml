@@ -8,38 +8,13 @@ on:
 
 jobs:
   build:
-    name: build, analyze, containerize ... repeat
+    name: debugging stuff
     runs-on: ubuntu-latest
     permissions: write-all
 
-    strategy:
-      matrix:
-        java-version:
-          - '21'
-
     steps:
-      - name: get branch name
-        id: branch-name
-        uses: tj-actions/branch-names@v8.0.1
-
-      - name: checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-
-      - name: set up JDK
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'temurin'
-          java-version: ${{ matrix.java-version }}
-          java-package: 'jdk'
-          cache: 'maven'
-
-      - name: Maven build
+      - name: Debug Maven Build
         run: |
-          mvn --batch-mode --no-transfer-progress \
-            -P repo-github -P all-tests \
-            clean \
-            --file pom.xml \
-            --settings .github/settings.xml
+          cat .github/settings.xml
+          mvn --batch-mode clean install --settings .github/settings.xml
        

@@ -23,4 +23,7 @@ jobs:
         run: |
           cat .github/settings.xml
           mvn --batch-mode clean install --settings .github/settings.xml
+        env:
+          MAIN_GITHUB_RELEASE_USERNAME: ${{ secrets.MAIN_GITHUB_RELEASE_USERNAME }}
+          MAIN_GITHUB_RELEASE_TOKEN: ${{ secrets.MAIN_GITHUB_RELEASE_TOKEN }}
        

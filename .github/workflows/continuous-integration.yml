@@ -39,6 +39,7 @@ jobs:
         run: |
           mvn --batch-mode --no-transfer-progress \
             -P repo-github -P all-tests \
+            clean
             --file pom.xml \
             --settings .github/settings.xml
        

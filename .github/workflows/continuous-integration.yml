@@ -1,10 +1,47 @@
-name: Continous Integration
+name: Java Continuous Integration
+
 on:
   push:
     branches:
       - '**'
   workflow_dispatch:
+
 jobs:
-  Build:
-    uses: minova-afis/aero.minova.os.github.workflows/.github/workflows/java-continuous-integration.yml@main
-    secrets: inherit
+  build:
+    name: build, analyze, containerize ... repeat
+    runs-on: ubuntu-latest
+    permissions: write-all
+
+    strategy:
+      matrix:
+        java-version:
+          - '21'
+
+    steps:
+      - name: get branch name
+        id: branch-name
+        uses: tj-actions/branch-names@v8.0.1
+
+      - name: checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+
+      - name: set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: ${{ matrix.java-version }}
+          java-package: 'jdk'
+          cache: 'maven'
+
+      - name: Maven build
+        run: |
+          mvn --batch-mode --no-transfer-progress \
+            -P repo-github -P all-tests \
+            -Dusername=$GITHUB_ACCESS_TOKEN \
+            -DAWS_ACCESS_KEY=${{ secrets.AWS_ACCESS_KEY }} \
+            -DAWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
+            --file pom.xml \
+            --settings .github/settings.xml
+       

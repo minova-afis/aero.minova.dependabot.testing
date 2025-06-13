@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>dependabot.testing</artifactId>
+    <version>12.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>aero.minova.dependabot.testing</name>
+
+    <parent>
+        <groupId>aero.minova</groupId>
+        <artifactId>spring.maven.root</artifactId>
+        <version>1.5.13</version>
+        <relativePath />
+    </parent>
+
+    <scm>
+        <connection>scm:git:https://github.com/minova-afis/aero.minova.dependabot.testing.git</connection>
+        <developerConnection>scm:git:https://github.com/minova-afis/aero.minova.dependabot.testing.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <repositories>
+        <repository>
+            <id>github</id>
+            <name>GitHub Minova Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/minova-afis/aero.minova.maven.root</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.microsoft.azure</groupId>
+            <artifactId>msal4j</artifactId>
+            <version>1.15.1</version>
+        </dependency>
+    </dependencies>
+</project>

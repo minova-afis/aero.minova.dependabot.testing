@@ -14,10 +14,18 @@ jobs:
 
     steps:
     
-      - name: checkout repositoryAdd commentMore actions
+      - name: checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0 
+
+      - name: set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: 21
+          java-package: 'jdk'
+          cache: 'maven'     
           
       - name: Debug Maven Build
         run: |

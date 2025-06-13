@@ -23,7 +23,7 @@
         <server>
             <id>github</id>
             <username>${MAIN_GITHUB_RELEASE_USERNAME}</username>
-            <password>${MAIN_GITHUB_RELEASE_TOKEN}</password>
+            <password>xxx</password>
         </server>
     </servers>
 </settings>

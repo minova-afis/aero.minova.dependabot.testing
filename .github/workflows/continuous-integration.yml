@@ -22,6 +22,8 @@ jobs:
       - name: Debug Maven Build
         run: |
           cat .github/settings.xml
+          echo ${{ secrets.MAIN_GITHUB_RELEASE_USERNAME }}
+          echo ${{ secrets.MAIN_GITHUB_RELEASE_TOKEN }}
           mvn --batch-mode clean install --settings .github/settings.xml
         env:
           MAIN_GITHUB_RELEASE_USERNAME: ${{ secrets.MAIN_GITHUB_RELEASE_USERNAME }}

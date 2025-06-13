@@ -39,9 +39,6 @@ jobs:
         run: |
           mvn --batch-mode --no-transfer-progress \
             -P repo-github -P all-tests \
-            -Dusername=$GITHUB_ACCESS_TOKEN \
-            -DAWS_ACCESS_KEY=${{ secrets.AWS_ACCESS_KEY }} \
-            -DAWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
             --file pom.xml \
             --settings .github/settings.xml
        
